@@ -4,3 +4,4 @@ include("CDI-ejemplo03")
 
 include("CDI-deber")
 include("JPA-ejemplo1")
+include("JPA-home")
