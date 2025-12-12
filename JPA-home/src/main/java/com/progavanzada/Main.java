@@ -16,7 +16,7 @@ class Main
        em.getTransaction().begin();
         em.persist(
             Student.builder()
-            .name("Robin").build());
+            .name("Juan").build());
         em.getTransaction().commit();
         System.out.println(em.find(Student.class, 1));
     }
