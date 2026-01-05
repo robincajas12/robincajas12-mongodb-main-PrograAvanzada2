@@ -1,8 +1,10 @@
 package com.progavanzada;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 import com.progavanzada.models.Author;
 import com.progavanzada.models.Book;
@@ -11,6 +13,7 @@ import com.progavanzada.models.PurchaseOrder;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 class Main
 {
@@ -20,35 +23,35 @@ class Main
         .createEntityManagerFactory("default");
 
         EntityManager em = entityManagerFactory.createEntityManager();
-       Book book = Book.builder()
-    .isbn("123-XYZ" + new Random().nextInt())
-    .title("xd xd Programming")
-    .authors(
+         Book book1 = Book.builder()
+            .isbn("123-XYZ" + System.currentTimeMillis())  // Generar un ISBN único
+            .title("Introducción a la Programación")
+            .value(40)
+            .build();
 
-        List.of(
-            Author.builder()
+        Book book2 = Book.builder()
+            .isbn("123-XYZ" + System.currentTimeMillis())  // Generar un ISBN único
+            .title("Java Avanzado")
+            .value(50)
+            .build();
 
-        .name("Juan")
-        
-        .build())
-
-
-    ).value(50)
-    .build();
-
+        // Persistir libros
         em.getTransaction().begin();
-        em.persist(book);
+        em.persist(book1);
+        em.persist(book2);
         em.getTransaction().commit();
-        System.out.println(em.find(Book.class, "123-XYZ"));
-        List<Book> books = em.createQuery(
-        "SELECT b FROM Book b", Book.class)
-        .getResultList();
-        books.forEach(System.out::println);
-    }
+         TypedQuery<Book> qry = em.createQuery("select o from Book o where o.value > :price", Book.class);
+        qry.setParameter("price", 40);
+        List<Book> books = qry.getResultList();
+        Stream<Book> books2 = qry.getResultStream();
 
-    PurchaseOrder purchaseOrder = PurchaseOrder.builder()
-    .id(1L)
-    .status(PurchaseOrder.Status.DELIVERED)
-    
-    .build();
+        /*TypedQuery<BookTitlePriceDTO> qry2 = em.createQuery("select o.title, o.value from Book o where o.value > :price", BookTitlePriceDTO.class);
+        qry2.setParameter("price", 40);
+                qry2.getResultStream().forEach(System.out::println);*/
+
+        TypedQuery<BookTitlePriceDTO> qry3 = em.createQuery("select o.title, o.value, o.inventory.sold from Book o where o.value > :price", BookTitlePriceDTO.class);
+qry3.setParameter("price", -50);
+qry3.getResultStream().forEach(System.out::println);
+    }
 }
+
