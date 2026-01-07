@@ -50,8 +50,8 @@ class Main
                 qry2.getResultStream().forEach(System.out::println);*/
 
         TypedQuery<BookTitlePriceDTO> qry3 = em.createQuery("select o.title, o.value, o.inventory.sold from Book o where o.value > :price", BookTitlePriceDTO.class);
-qry3.setParameter("price", -50);
-qry3.getResultStream().forEach(System.out::println);
+        qry3.setParameter("price", -50);
+        qry3.getResultStream().forEach(System.out::println);
     }
 }
 

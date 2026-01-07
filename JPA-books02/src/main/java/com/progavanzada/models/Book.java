@@ -14,7 +14,9 @@ import lombok.*;
 @NoArgsConstructor
 public class Book {
     @Id
+    @Column(name = "isbn", length = 16)
     private String isbn;
+    @Column(length = 128)
     private String title;
     private int value;
     
