@@ -552,3 +552,403 @@
        add constraint FKs3cbu181auvlo0wbl95c9xb9k 
        foreign key (customer_id) 
        references customer;
+
+    create sequence seq_customer start with 10000 increment by 1000;
+
+    create table authors (
+        version integer,
+        id bigint not null,
+        name varchar(64) not null,
+        primary key (id)
+    );
+
+    create table book_author (
+        author_id bigint not null,
+        book_isbn varchar(16) not null
+    );
+
+    create table books (
+        value integer not null,
+        isbn varchar(16) not null,
+        title varchar(128),
+        primary key (isbn)
+    );
+
+    create table customer (
+        version integer,
+        id bigint not null,
+        email varchar(255),
+        name varchar(255),
+        primary key (id),
+        unique (email, name)
+    );
+
+    create table ids_generados (
+        sigid bigint,
+        tabla varchar(255) not null,
+        primary key (tabla)
+    );
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    create table inventory (
+        sold integer,
+        supplied integer,
+        version integer,
+        book_isbn varchar(16) not null,
+        primary key (book_isbn)
+    );
+
+    create table LineItem (
+        quantity integer,
+        id bigint not null,
+        order_id bigint,
+        book_isbn varchar(16),
+        primary key (id)
+    );
+
+    create table purchase_orders (
+        status smallint check ((status between 0 and 2)),
+        total integer,
+        customer_id bigint,
+        delivered_on timestamp(6),
+        id bigint not null,
+        placed_on timestamp(6),
+        primary key (id)
+    );
+
+    alter table if exists book_author 
+       add constraint FKro54jqpth9cqm1899dnuu9lqg 
+       foreign key (author_id) 
+       references authors;
+
+    alter table if exists book_author 
+       add constraint FKnvlnolful0r0jxytl44fphdlx 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists inventory 
+       add constraint FK1sy1irmung5j576i1eawmpfou 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKe8m36o6c1b23uc82qbtwxjk3m 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKtgkt4p0ycq6hbyecg7hq3bn1f 
+       foreign key (order_id) 
+       references purchase_orders;
+
+    alter table if exists purchase_orders 
+       add constraint FKs3cbu181auvlo0wbl95c9xb9k 
+       foreign key (customer_id) 
+       references customer;
+
+    create sequence seq_customer start with 10000 increment by 1000;
+
+    create table authors (
+        version integer,
+        id bigint not null,
+        name varchar(64) not null,
+        primary key (id)
+    );
+
+    create table book_author (
+        author_id bigint not null,
+        book_isbn varchar(16) not null
+    );
+
+    create table books (
+        value integer not null,
+        isbn varchar(16) not null,
+        title varchar(128),
+        primary key (isbn)
+    );
+
+    create table customer (
+        version integer,
+        id bigint not null,
+        email varchar(255),
+        name varchar(255),
+        primary key (id),
+        unique (email, name)
+    );
+
+    create table ids_generados (
+        sigid bigint,
+        tabla varchar(255) not null,
+        primary key (tabla)
+    );
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    create table inventory (
+        sold integer,
+        supplied integer,
+        version integer,
+        book_isbn varchar(16) not null,
+        primary key (book_isbn)
+    );
+
+    create table LineItem (
+        quantity integer,
+        id bigint not null,
+        order_id bigint,
+        book_isbn varchar(16),
+        primary key (id)
+    );
+
+    create table purchase_orders (
+        status smallint check ((status between 0 and 2)),
+        total integer,
+        customer_id bigint,
+        delivered_on timestamp(6),
+        id bigint not null,
+        placed_on timestamp(6),
+        primary key (id)
+    );
+
+    alter table if exists book_author 
+       add constraint FKro54jqpth9cqm1899dnuu9lqg 
+       foreign key (author_id) 
+       references authors;
+
+    alter table if exists book_author 
+       add constraint FKnvlnolful0r0jxytl44fphdlx 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists inventory 
+       add constraint FK1sy1irmung5j576i1eawmpfou 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKe8m36o6c1b23uc82qbtwxjk3m 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKtgkt4p0ycq6hbyecg7hq3bn1f 
+       foreign key (order_id) 
+       references purchase_orders;
+
+    alter table if exists purchase_orders 
+       add constraint FKs3cbu181auvlo0wbl95c9xb9k 
+       foreign key (customer_id) 
+       references customer;
+
+    create sequence seq_customer start with 10000 increment by 1000;
+
+    create table authors (
+        version integer,
+        id bigint not null,
+        name varchar(64) not null,
+        primary key (id)
+    );
+
+    create table book_author (
+        author_id bigint not null,
+        book_isbn varchar(16) not null
+    );
+
+    create table books (
+        value integer not null,
+        isbn varchar(16) not null,
+        title varchar(128),
+        primary key (isbn)
+    );
+
+    create table customer (
+        version integer,
+        id bigint not null,
+        email varchar(255),
+        name varchar(255),
+        primary key (id),
+        unique (email, name)
+    );
+
+    create table ids_generados (
+        sigid bigint,
+        tabla varchar(255) not null,
+        primary key (tabla)
+    );
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    create table inventory (
+        sold integer,
+        supplied integer,
+        version integer,
+        book_isbn varchar(16) not null,
+        primary key (book_isbn)
+    );
+
+    create table LineItem (
+        quantity integer,
+        id bigint not null,
+        order_id bigint,
+        book_isbn varchar(16),
+        primary key (id)
+    );
+
+    create table purchase_orders (
+        status smallint check ((status between 0 and 2)),
+        total integer,
+        customer_id bigint,
+        delivered_on timestamp(6),
+        id bigint not null,
+        placed_on timestamp(6),
+        primary key (id)
+    );
+
+    alter table if exists book_author 
+       add constraint FKro54jqpth9cqm1899dnuu9lqg 
+       foreign key (author_id) 
+       references authors;
+
+    alter table if exists book_author 
+       add constraint FKnvlnolful0r0jxytl44fphdlx 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists inventory 
+       add constraint FK1sy1irmung5j576i1eawmpfou 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKe8m36o6c1b23uc82qbtwxjk3m 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKtgkt4p0ycq6hbyecg7hq3bn1f 
+       foreign key (order_id) 
+       references purchase_orders;
+
+    alter table if exists purchase_orders 
+       add constraint FKs3cbu181auvlo0wbl95c9xb9k 
+       foreign key (customer_id) 
+       references customer;
+
+    create sequence seq_customer start with 10000 increment by 1000;
+
+    create table authors (
+        version integer,
+        id bigint not null,
+        name varchar(64) not null,
+        primary key (id)
+    );
+
+    create table book_author (
+        author_id bigint not null,
+        book_isbn varchar(16) not null
+    );
+
+    create table books (
+        value integer not null,
+        isbn varchar(16) not null,
+        title varchar(128),
+        primary key (isbn)
+    );
+
+    create table customer (
+        version integer,
+        id bigint not null,
+        email varchar(255),
+        name varchar(255),
+        primary key (id),
+        unique (email, name)
+    );
+
+    create table ids_generados (
+        sigid bigint,
+        tabla varchar(255) not null,
+        primary key (tabla)
+    );
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',100);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',100);
+
+    insert into ids_generados(tabla, sigid) values ('xxxxx',0);
+
+    create table inventory (
+        sold integer,
+        supplied integer,
+        version integer,
+        book_isbn varchar(16) not null,
+        primary key (book_isbn)
+    );
+
+    create table LineItem (
+        quantity integer,
+        id bigint not null,
+        order_id bigint,
+        book_isbn varchar(16),
+        primary key (id)
+    );
+
+    create table purchase_orders (
+        status smallint check ((status between 0 and 2)),
+        total integer,
+        customer_id bigint,
+        delivered_on timestamp(6),
+        id bigint not null,
+        placed_on timestamp(6),
+        primary key (id)
+    );
+
+    alter table if exists book_author 
+       add constraint FKro54jqpth9cqm1899dnuu9lqg 
+       foreign key (author_id) 
+       references authors;
+
+    alter table if exists book_author 
+       add constraint FKnvlnolful0r0jxytl44fphdlx 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists inventory 
+       add constraint FK1sy1irmung5j576i1eawmpfou 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKe8m36o6c1b23uc82qbtwxjk3m 
+       foreign key (book_isbn) 
+       references books;
+
+    alter table if exists LineItem 
+       add constraint FKtgkt4p0ycq6hbyecg7hq3bn1f 
+       foreign key (order_id) 
+       references purchase_orders;
+
+    alter table if exists purchase_orders 
+       add constraint FKs3cbu181auvlo0wbl95c9xb9k 
+       foreign key (customer_id) 
+       references customer;

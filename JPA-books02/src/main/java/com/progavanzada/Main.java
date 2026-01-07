@@ -21,7 +21,10 @@ class Main
     {
         EntityManagerFactory entityManagerFactory = Persistence
         .createEntityManagerFactory("default");
-
+        entityManagerFactory.runInTransaction(em -> {
+            var author =  Author.builder().name("juan").build();
+            em.persist(author);
+        });
         EntityManager em = entityManagerFactory.createEntityManager();
          Book book1 = Book.builder()
             .isbn("123-XYZ" + System.currentTimeMillis())  // Generar un ISBN único

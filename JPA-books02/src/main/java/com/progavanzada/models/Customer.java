@@ -13,12 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Builder;
 
 @Data
 @Builder
 @Entity
-@Table(name = "customer")
+@Table(name = "customer", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"email", "name"})
+})
 public class Customer {
     @Id
     @SequenceGenerator(
