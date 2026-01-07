@@ -22,12 +22,12 @@ import lombok.Builder;
 public class Customer {
     @Id
     @SequenceGenerator(
-        name = "seqauthors",
-        sequenceName = "seq_authors",
+        name = "seqcustomer",
+        sequenceName = "seq_customer",
         allocationSize = 1000,
         initialValue = 10000
     )
-    @GeneratedValue(generator = "seqauthors")
+    @GeneratedValue(generator = "seqcustomer")
     private Long id;
     private String name;
     private String email;

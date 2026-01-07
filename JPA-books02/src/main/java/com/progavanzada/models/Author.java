@@ -12,7 +12,14 @@ import lombok.*;
 @AllArgsConstructor
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "gen-author")
+    @TableGenerator(name = "gen-author",
+        table = "ids_generados",
+        pkColumnName = "tabla",
+        valueColumnName = "sigid",
+        pkColumnValue = "xxxxx",
+        allocationSize = 50
+    )
     private Long id;
     @Column(length = 64, nullable = false)
     private String name;
