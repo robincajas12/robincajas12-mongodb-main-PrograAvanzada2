@@ -6,4 +6,4 @@ include("CDI-deber")
 include("JPA-ejemplo1")
 include("JPA-home")*/
 //include("JPA-books02")
-include("Concurrencia-ejemplo1")
+include("practicaPrueba")
